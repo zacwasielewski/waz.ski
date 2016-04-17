@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Your awesome title</title>
-  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-">
+  <title>On Contributing</title>
+  <meta name="description" content="The other day, my friend Brad asked a question on Stack Overflow regarding LESS and Bootstrap 3. Sensing an opportunity for some easy reputation points, I ho...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/">
+  <link rel="canonical" href="http://yourdomain.com/uncategorized/2013/08/14/on-contributing.html">
   <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://yourdomain.com/feed.xml">
 </head>
 
@@ -55,137 +54,27 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">On Contributing</h1>
+    <p class="post-meta"><time datetime="2013-08-14T23:04:21-04:00" itemprop="datePublished">Aug 14, 2013</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Zac Wasielewski</span></span></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Apr 17, 2016</span>
+  <div class="post-content" itemprop="articleBody">
+    <p>The other day, my friend <a href="http://bkmorse.com/">Brad</a> asked a <a href="http://stackoverflow.com/questions/18089442/twitter-bootstrap-hidden-lg-less-not-working/18106165">question on Stack Overflow</a> regarding LESS and Bootstrap 3. Sensing an opportunity for some easy reputation points, I hopped on and posted a quick solution.</p>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/04/17/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Oct 6, 2015</span>
+<p>Except, it didn’t work. Neither did my next solution, or the next, or the next. I’m familiar enough with Bootstrap, and with LESS, to <em>know</em> my solutions should have worked. But they didn’t. So I dug in, forked the repo, and built a test case.</p>
 
-        <h2>
-          <a class="post-link" href="/2015/10/06/wordpress-php-mail.html">Forcing WordPress to send email on (some) shared web hosts</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jul 17, 2015</span>
+<p>It turned out that Bootstrap didn’t support the functionality that Brad was trying to use. The docs weren’t even totally clear on whether it <em>should</em>. So after explaining the problem, and workaround, on Stack Overflow, I thought: why not submit the “fix” back as a pull request? <a href="https://github.com/twbs/bootstrap/pull/9211">So I did</a>, and to my surprise, it was accepted and rolled into <a href="http://blog.getbootstrap.com/2013/08/13/bootstrap-3-rc2/">Bootstrap 3 RC2</a>.</p>
 
-        <h2>
-          <a class="post-link" href="/uncategorized/2015/07/17/responsive-shopify-product-images.html">Responsive Shopify product images</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Feb 20, 2015</span>
+<p>For you veteran Githubbers, my experience is nothing special. In fact, I’ve submitted plenty of pull requests myself. But this was my first to a major open-source project, so it still feels shiny and cool to me.</p>
 
-        <h2>
-          <a class="post-link" href="/uncategorized/2015/02/20/links.html">Links</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 26, 2015</span>
+<p>More importantly, though, it’s a valuable reminder: just because a project is large and popular, it not necessarily free of issues. Don’t assume that other developers are smarter than you, or that you have nothing valuable to contribute. You probably do! But you’ll never know unless you get your hands dirty.</p>
 
-        <h2>
-          <a class="post-link" href="/links/2015/01/26/links.html">Links</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 15, 2015</span>
+  </div>
 
-        <h2>
-          <a class="post-link" href="/links/2015/01/15/links.html">Links</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 14, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2015/01/14/failures-successes-and-goals.html">Failures, Successes, and Goals</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jul 18, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2014/07/18/what-problems-to-solve.html">What Problems to Solve</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 14, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2014/05/14/which-conf-files-is-apache-using.html">Which .conf file(s) is Apache using?</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 28, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2014/01/28/wordpress-multisite-proxy-configuration.html">WordPress multisite proxy configuration</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Oct 7, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/10/07/relationships-are-everything.html">Relationships are everything</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 23, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/09/23/frequent-failure-is-expected.html">Frequent Failure Is Expected</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 7, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/09/07/why-trust-climate-models.html">Why Trust Climate Models</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 15, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/08/15/theme-details.html">Theme Details</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 14, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/08/14/on-contributing.html">On Contributing</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-</div>
+</article>
 
       </div>
     </div>

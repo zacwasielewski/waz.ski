@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Your awesome title</title>
-  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-">
+  <title>Which .conf file(s) is Apache using?</title>
+  <meta name="description" content="I spent the majority of this week debugging some Apache ModRewrite rules. (Yes, today is Wednesday.) It shouldn’t have taken so long. The rules themselves we...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/">
+  <link rel="canonical" href="http://yourdomain.com/uncategorized/2014/05/14/which-conf-files-is-apache-using.html">
   <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://yourdomain.com/feed.xml">
 </head>
 
@@ -55,137 +54,46 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Which .conf file(s) is Apache using?</h1>
+    <p class="post-meta"><time datetime="2014-05-14T14:22:40-04:00" itemprop="datePublished">May 14, 2014</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Zac Wasielewski</span></span></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Apr 17, 2016</span>
+  <div class="post-content" itemprop="articleBody">
+    <p><span class="run-in">I spent the majority of this week debugging some Apache ModRewrite rules.</span> (Yes, today is Wednesday.) It shouldn’t have taken so long. The rules themselves weren’t complex, but the server environment is.</p>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/04/17/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Oct 6, 2015</span>
+<p>Our production web site consists of a load balancer, Memcached server, two synchronized app servers, and two synchronized static file servers. There are obsolete, broken, and duplicate Apache config files distributed in various directories across the app and static servers. Many of the config files recursively included directories full of other config files. By trial-and-error, I sifted through them all, adding debug statements and restarting httpd, over and over and over. Nothing worked; Apache ignored every file I touched.</p>
 
-        <h2>
-          <a class="post-link" href="/2015/10/06/wordpress-php-mail.html">Forcing WordPress to send email on (some) shared web hosts</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jul 17, 2015</span>
+<p>As usual, it turns out there’s an easier way to discover <em>exactly</em> which .conf files Apache is using.</p>
 
-        <h2>
-          <a class="post-link" href="/uncategorized/2015/07/17/responsive-shopify-product-images.html">Responsive Shopify product images</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Feb 20, 2015</span>
+<p>First, get some data about your running Apache process:</p>
 
-        <h2>
-          <a class="post-link" href="/uncategorized/2015/02/20/links.html">Links</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 26, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/links/2015/01/26/links.html">Links</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 15, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/links/2015/01/15/links.html">Links</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 14, 2015</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2015/01/14/failures-successes-and-goals.html">Failures, Successes, and Goals</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jul 18, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2014/07/18/what-problems-to-solve.html">What Problems to Solve</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 14, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2014/05/14/which-conf-files-is-apache-using.html">Which .conf file(s) is Apache using?</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 28, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2014/01/28/wordpress-multisite-proxy-configuration.html">WordPress multisite proxy configuration</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Oct 7, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/10/07/relationships-are-everything.html">Relationships are everything</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 23, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/09/23/frequent-failure-is-expected.html">Frequent Failure Is Expected</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 7, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/09/07/why-trust-climate-models.html">Why Trust Climate Models</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 15, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/08/15/theme-details.html">Theme Details</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 14, 2013</span>
-
-        <h2>
-          <a class="post-link" href="/uncategorized/2013/08/14/on-contributing.html">On Contributing</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ps ax | grep httpd
+21765 ?        Ss     0:00 /usr/sbin/httpd -f /var/www/conf/example.com.conf -E /var/www/logs/example.com-20140514-startup.log
+</code></pre>
 </div>
+
+<p>This is valuable information, because now that we know the exact binary and config file Apache is running with, we can use the <a href="http://httpd.apache.org/docs/2.4/programs/httpd.html">-S option</a> to show VirtualHost settings:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ /usr/sbin/httpd -f /var/www/conf/example.com.conf -S
+VirtualHost configuration:
+*:80    is a NameVirtualHost
+        default server www.example.com (/var/www/conf/virtual/example.com/www.example.com.conf:1)
+        port 80 namevhost www.example.com (/var/www/conf/virtual/example.com/www.example.com.conf:1)
+        port 80 namevhost www2.example.com (/var/www/conf/virtual/example.com/www2.example.com.conf:1)
+        ...
+</code></pre>
+</div>
+
+<p>From the output above, we see that <code class="highlighter-rouge">www.example.com</code>s VirtualHost is defined in <code class="highlighter-rouge">/var/www/conf/virtual/example.com/www.example.com.conf</code>.</p>
+
+<p>That’s all there is to it — no guesswork necessary.</p>
+
+  </div>
+
+</article>
 
       </div>
     </div>
