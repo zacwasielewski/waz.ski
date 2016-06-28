@@ -18,6 +18,9 @@ github_username:  zacwasielewski
 markdown: kramdown
 
 exclude: [
+  '.git',
+  '.gitignore',
   'node_modules',
-  'package.json'
+  'package.json',
+  'README.md'
 ]
