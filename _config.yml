@@ -17,4 +17,8 @@ github_username:  zacwasielewski
 # Build settings
 markdown: kramdown
 
-exclude: ['Dockerfile']
+exclude: [
+  'Dockerfile',
+  'node_modules',
+  'package.json'
+]
