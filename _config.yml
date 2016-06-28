@@ -18,7 +18,6 @@ github_username:  zacwasielewski
 markdown: kramdown
 
 exclude: [
-  'Dockerfile',
   'node_modules',
   'package.json'
 ]
