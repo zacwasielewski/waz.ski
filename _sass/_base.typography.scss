@@ -1,0 +1,17 @@
+
+html {
+  @include typi-base($base-font-map);
+  font-family: 'freight-text-pro', Georgia, serif;
+}
+
+h1, h2, h3 {
+  font-family: 'freight-neo-pro', Helvetica, sans-serif;
+}
+
+h1 {
+  @include typi($heading-font-map);
+}
+
+h2, h3, h4, h5, h6 {
+  @include typi($subheading-font-map);
+}

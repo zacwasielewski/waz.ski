@@ -1,0 +1,21 @@
+{
+  "name": "waz.ski",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "breakpoint-sass": "^2.7.0",
+    "cap-height": "^1.1.2",
+    "gutenberg-web-type": "^1.1.0",
+    "megatype": "^1.0.2",
+    "modularscale-sass": "^2.1.1",
+    "sassline": "^2.1.2",
+    "susy": "^2.2.12",
+    "typi": "^2.1.1"
+  }
+}

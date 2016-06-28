@@ -2,3 +2,21 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 @charset "utf-8";
+
+@import "../node_modules/modularscale-sass/stylesheets/modular-scale";
+
+@import "settings.vendor";
+
+@import "../node_modules/susy/sass/susy";
+@import "../node_modules/typi/scss/typi";
+
+@import "settings.variables";
+@import "settings.typography";
+
+//@import "../node_modules/megatype/megatype";
+//@import "../node_modules/breakpoint-sass/stylesheets/breakpoint";
+//@import "../node_modules/sassline/assets/sass/sassline-base";
+
+@import "base.typography";
+
+@import "layout";

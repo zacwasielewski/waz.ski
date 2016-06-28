@@ -1,0 +1,19 @@
+$base-font-map: (
+  null:   (ms(0), vr(1)),
+  medium: (ms(0), vr(1)),
+  large:  (ms(0), vr(1))
+);
+
+$heading-font-map: (
+  null:   (ms(1), vr(2)),
+  medium: (ms(1), vr(2)),
+  large:  (ms(1), vr(2))
+);
+
+$subheading-font-map: (
+  null:   (ms(0), vr(1)),
+  medium: (ms(0), vr(1)),
+  large:  (ms(0), vr(1))
+);
+
+$typi: $base-font-map;
