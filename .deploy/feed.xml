@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zac Wasielewski</title>
+    <description></description>
+    <link>http://waz.ski/</link>
+    <atom:link href="http://waz.ski/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 28 Jun 2016 15:39:36 -0400</pubDate>
+    <lastBuildDate>Tue, 28 Jun 2016 15:39:36 -0400</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 17 Apr 2016 08:50:05 -0400</pubDate>
+        <link>http://waz.ski/jekyll/update/2016/04/17/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://waz.ski/jekyll/update/2016/04/17/welcome-to-jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Forcing WordPress to send email on (some) shared web hosts</title>
+        <description>&lt;p&gt;A common problem with WordPress on shared hosts is PHP’s built-in &lt;code class=&quot;highlighter-rouge&quot;&gt;mail()&lt;/code&gt; not working. There are a few possible reasons for this, and a popular workaround is to &lt;a href=&quot;https://wordpress.org/plugins/wp-mail-smtp/&quot;&gt;enable SMTP mail instead&lt;/a&gt;. That method requires an account with a valid SMTP host, which isn’t always an option (especially for clients).&lt;/p&gt;
+
+&lt;p&gt;But depending on your host, &lt;code class=&quot;highlighter-rouge&quot;&gt;mail()&lt;/code&gt; may actually be enabled, and simply require a bit of extra love. Rackspace Cloud Sites, for example, will let you use &lt;code class=&quot;highlighter-rouge&quot;&gt;mail()&lt;/code&gt; as long as you &lt;a href=&quot;http://www.rackspace.com/knowledge_center/article/test-php-mail-functionality&quot;&gt;include a valid &lt;code class=&quot;highlighter-rouge&quot;&gt;Sender (Return-Path)&lt;/code&gt; header&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To test your web host’s support, upload this code snippet to your site and access it in a browser:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;?php
+$to = &#39;nobody@example.com&#39;; // &amp;lt;- Change this to your email address
+$subject = &#39;Test email using PHP&#39;;
+$message = &#39;This is a test email message&#39;;
+$headers = &#39;From: webmaster@example.com&#39; . &quot;\r\n&quot;
+    . &#39;Reply-To: webmaster@example.com&#39; . &quot;\r\n&quot;
+    . &#39;X-Mailer: PHP/&#39; . phpversion();
+$sent = mail($to, $subject, $message, $headers, &#39;-fwebmaster@example.com&#39;);
+if ($sent) {
+  echo &#39;SUCCESS: Mail was sent!&#39;;
+} else {
+  echo &#39;FAILURE: Mail was not sent.&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If you received an email, then you’re in good shape. To enable the same in WordPress, it’s simple:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Install the &lt;a href=&quot;https://wordpress.org/plugins/wp-mail-options/&quot;&gt;WP Mail Options&lt;/a&gt; plugin.&lt;/li&gt;
+  &lt;li&gt;Navigate to Admin → Settings → WP Mail Options&lt;/li&gt;
+  &lt;li&gt;Fill in the &lt;strong&gt;From&lt;/strong&gt;, &lt;strong&gt;From Name&lt;/strong&gt;, and &lt;strong&gt;Sender (Return-Path)&lt;/strong&gt; fields (&lt;em&gt;From and Sender should usually be the same email address.&lt;/em&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Enjoy your new mail-mailing capabilities!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 06 Oct 2015 13:15:00 -0400</pubDate>
+        <link>http://waz.ski/2015/10/06/wordpress-php-mail.html</link>
+        <guid isPermaLink="true">http://waz.ski/2015/10/06/wordpress-php-mail.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Responsive Shopify product images</title>
+        <description>&lt;p&gt;&lt;span class=&quot;run-in&quot;&gt;I love Shopify&lt;/span&gt;, but during some recent theme development, I noticed certain pages loading slowly, especially on an iPhone. The slowness was most obvious on category pages listing many products.  A quick debugging session revealed that load times could improve by serving smaller, mobile-optimized images.&lt;/p&gt;
+
+&lt;p&gt;Of course, I still wanted desktop users to see the large, full-resolution images. Which is essentially the perfect use-case for &lt;a href=&quot;https://responsiveimages.org/&quot;&gt;responsive images&lt;/a&gt;. So I created a &lt;code class=&quot;highlighter-rouge&quot;&gt;.liquid&lt;/code&gt; snippet (with supporting Javascript) than you can use to enable responsive product images on Shopify:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/zacwasielewski/shopify-responsive-images&quot;&gt;github.com/zacwasielewski/shopify-responsive-images&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-responsive-images-and-why-should-i-bother&quot;&gt;What are responsive images, and why should I bother?&lt;/h2&gt;
+
+&lt;p&gt;People view your web site on a variety of screens, from handheld phones to large, high-resolution widescreen monitors. So we build our sites to be responsive, and they look great on any device. But why should tiny phones waste time and bandwidth downloading big, beautiful, desktop-worthy images? They shouldn’t. For maximum performance, your site should serve only what the user &lt;em&gt;needs&lt;/em&gt;, and nothing more.&lt;/p&gt;
+
+&lt;p&gt;“Responsive images” solve this problem by pre-generating an array of various-sized images, then allowing the browser to choose the most appropriate size to download. So a desktop browser will retrieve large, full-quality images, while a mobile browser will download a smaller, optimized version.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-responsive-images-work&quot;&gt;How do responsive images work?&lt;/h2&gt;
+
+&lt;p&gt;The basic code snippet is simply an &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag with two additional attributes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sizes&lt;/code&gt;&lt;/strong&gt; tells the image’s size relative to the viewport, for one or more media queries (&lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; = “viewport width”)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;scrcset&lt;/code&gt;&lt;/strong&gt; lists the name and width of each available size variation for this image&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So the following example declares that the image will occupy 50% of the viewport width when the viewport is over 480 pixels wide, and 100% of the viewport width otherwise:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;img sizes=&quot;(min-width: 480px) 50vw, 100vw&quot;
+     srcset=&quot;small.png 400w, medium.png 800w, large.png 1200w&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Given those two attributes, the browser now has enough data to choose the most appropriate image to serve.&lt;/p&gt;
+
+&lt;h2 id=&quot;will-this-actually-work-today-in-real-browers&quot;&gt;Will this actually work, today, in real browers?&lt;/h2&gt;
+
+&lt;p&gt;Yeah. As usual, &lt;a href=&quot;http://caniuse.com/#feat=srcset&quot;&gt;native browser support for srcset and sizes is poor&lt;/a&gt;. But an awesome little polyfill library named &lt;a href=&quot;http://scottjehl.github.io/picturefill/&quot;&gt;Picturefill&lt;/a&gt; has our backs.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation-and-usage&quot;&gt;Installation and Usage&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://scottjehl.github.io/picturefill/#getting-started&quot;&gt;Install Picturefill&lt;/a&gt; (unless you only care about the newest browsers).&lt;/li&gt;
+  &lt;li&gt;Clone the repo: &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone git@github.com:zacwasielewski/shopify-responsive-images.git&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy &lt;code class=&quot;highlighter-rouge&quot;&gt;responsive-images.js&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/&lt;/code&gt; and include it with your other scripts (usually at the bottom of theme.liquid):&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;responsive-images.js&#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;asset_url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;script_tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy &lt;code class=&quot;highlighter-rouge&quot;&gt;responsive-product-image.liquid&lt;/code&gt; to your theme’s &lt;code class=&quot;highlighter-rouge&quot;&gt;snippets/&lt;/code&gt; folder and include it wherever you would normally include a product image:&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;responsive-product-image&#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Optionally, modify the previous step to include a list of &lt;code class=&quot;highlighter-rouge&quot;&gt;sizes&lt;/code&gt; matching your site’s media queries:&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;responsive-product-image&#39;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;sizes:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;(max-width:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;480px)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;100vw,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(min-width:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;481px)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(max-width:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;768px)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;50vw,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;25vw&#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you prefer to learn by example, here’s a sample template to see it all in action: &lt;a href=&quot;https://github.com/zacwasielewski/shopify-responsive-images/blob/master/examples/collection-with-layout.liquid&quot;&gt;github.com/zacwasielewski/shopify-responsive-images/blob/master/examples/collection-with-layout.liquid&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;questions&quot;&gt;Questions?&lt;/h2&gt;
+
+&lt;p&gt;I’m &lt;a href=&quot;https://twitter.com/xac&quot;&gt;@xac&lt;/a&gt; on Twitter.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 17 Jul 2015 02:13:49 -0400</pubDate>
+        <link>http://waz.ski/uncategorized/2015/07/17/responsive-shopify-product-images.html</link>
+        <guid isPermaLink="true">http://waz.ski/uncategorized/2015/07/17/responsive-shopify-product-images.html</guid>
+        
+        <category>Shopify</category>
+        
+        <category>CSS</category>
+        
+        <category>Responsive Design</category>
+        
+        <category>Web Development</category>
+        
+        
+        <category>Uncategorized</category>
+        
+      </item>
+    
+      <item>
+        <title>Links</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming&quot;&gt;A practical introduction to functional programming&lt;/a&gt; – The best article I’ve read about functional programming.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@searls/how-to-make-your-iphone-dimmer-than-dim-d20fd3bbbb66&quot;&gt;How-to make your iPhone Dimmer than Dim&lt;/a&gt; – Even at its dimmest, the iPhone display is too bright for reading at night in bed. This makes it go even dimmer. (Let’s ignore the fact that I shouldn’t have my phone in bed in the first place.)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.behance.net/gallery/19414395/Hungarian-paper-money&quot;&gt;Hungarian paper money&lt;/a&gt; – A beautiful “redesign” of the fictional Hungarian euro.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://keepachangelog.com/&quot;&gt;keepachangelog.com&lt;/a&gt; – Well-considered rules and conventions for change logs. I’ll be keeping one for all of my projects from now on.&lt;/li&gt;
+  &lt;li&gt;“&lt;a href=&quot;https://the-pastry-box-project.net/scott-jehl/2014-october-9&quot;&gt;Under-promise and over-deliver&lt;/a&gt;” is one of the most difficult and important principles in life. I’m still struggling to improve at this.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 20 Feb 2015 15:35:30 -0500</pubDate>
+        <link>http://waz.ski/uncategorized/2015/02/20/links.html</link>
+        <guid isPermaLink="true">http://waz.ski/uncategorized/2015/02/20/links.html</guid>
+        
+        
+        <category>Uncategorized</category>
+        
+      </item>
+    
+      <item>
+        <title>Links</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/fizx/parsley/wiki&quot;&gt;Parsley&lt;/a&gt; – Command-line tool to extract structured data from web pages as JSON. Its simple syntax is a superset of CSS3 and XPATH.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://fortune.com/2011/09/18/downtown-is-for-people-fortune-classic-1958/&quot;&gt;Downtown is for People&lt;/a&gt; –  “&lt;span style=&quot;color: #151515;&quot;&gt;Rarely before has the citizen had such a chance to reshape the city, and to make it the kind of city that he likes and that others will too.” &lt;/span&gt;A classic article on urban planning. (Especially relevant now as my city, Utica, seems to in the early stages of a rebirth.)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.becomingminimalist.com/blank-spaces/&quot;&gt;The Possibility in Blank Spaces&lt;/a&gt; – Why it’s worth resisting the urge to fill everything.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://welcometobusinesstown.tumblr.com/&quot;&gt;Business Town! What Value-Creating Winners Do All Day&lt;/a&gt; – What if Richard Scarry grew up in Silicon Valley? The satire isn’t particularly original, but the illustrations are wonderful.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://aerialwallpapers.tumblr.com/&quot;&gt;Aerial Wallpapers&lt;/a&gt; – iPhone wallpapers created from aerial satellite photos. Much more beautiful than they sound.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 26 Jan 2015 14:35:11 -0500</pubDate>
+        <link>http://waz.ski/links/2015/01/26/links.html</link>
+        <guid isPermaLink="true">http://waz.ski/links/2015/01/26/links.html</guid>
+        
+        
+        <category>Links</category>
+        
+      </item>
+    
+      <item>
+        <title>Links</title>
+        <description>&lt;p&gt;I subscribe to a handful of blogs that regularly publish interesting or useful links. Those tend to be my favorite kind of post, so I’m going to try sharing the wealth and publish some of my own. Enjoy!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://railsbox.io&quot;&gt;Railsbox&lt;/a&gt; — An online GUI to build virtual machines for web development. Similar to &lt;a href=&quot;https://puphpet.com/&quot;&gt;PuPHPet&lt;/a&gt; and &lt;a href=&quot;http://getprotobox.com/&quot;&gt;Protobox&lt;/a&gt;, but uses Ansible for provisioning and supports Unicorn/Passenger out of the box. (If I have some spare time, I’d like to create a pull request for deploying to Digital Ocean.)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://osvaldas.info/auto-hide-sticky-header&quot;&gt;Auto-Hide Sticky Header&lt;/a&gt; — This useful and subtle navigation UI pattern is everywhere lately. Here Osvaldas Valutis provides a canonical example and explanation, including a few variations.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://instagram.com/lorraineloots&quot;&gt;Lorraine Loots on Instagram&lt;/a&gt; — Lorraine creates tiny, amazing drawing and paintings. Get lost in her Instagram feed!&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://skyline.is/&quot;&gt;Skyline&lt;/a&gt; — “A starting point for building custom CSS frameworks.” This is the type of groundwork that I wish Bootstrap and Foundation were built upon. Its modular organization is well-considered, and the use of SCSS and BEM notation appeal to me.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://artoo.io/&quot;&gt;Artoo&lt;/a&gt; — Framework for programming robots in Ruby. There’s an &lt;a href=&quot;http://artoo.io/documentation/platforms/arduino/&quot;&gt;Arduino library&lt;/a&gt;, which seems like a fun, native-feeling alternative to Processing.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 15 Jan 2015 15:25:10 -0500</pubDate>
+        <link>http://waz.ski/links/2015/01/15/links.html</link>
+        <guid isPermaLink="true">http://waz.ski/links/2015/01/15/links.html</guid>
+        
+        
+        <category>Links</category>
+        
+      </item>
+    
+      <item>
+        <title>Failures, Successes, and Goals</title>
+        <description>&lt;p&gt;&lt;span class=&quot;run-in&quot;&gt;It’s a few weeks into 2015 already&lt;/span&gt;, and I’m trying to redevelop a blogging habit as part of a larger effort to refocus my life. With that in mind, it seems appropriate to summarize the previous year, and then set some goals for the upcoming year.&lt;/p&gt;
+
+&lt;h2 id=&quot;failures&quot;&gt;Failures&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;My long-term side project, &lt;a href=&quot;http://boulderproblems.com/&quot;&gt;Boulder Problems&lt;/a&gt;, lost enough traction that it’s no longer worth developing in its current form.&lt;/strong&gt; It failed for a variety of reasons: lack of marketing, lack of time, and lack of focus. Letting go of this project is emotionally challenging. I’ve poured huge amounts of time into it, and learned some difficult, important lessons. There’s unfortunately no way I can hope to compete with the upcoming logging tools that &lt;a href=&quot;https://www.island.io/&quot;&gt;The Island&lt;/a&gt; has announced. I wish them success, as it seems they’re developing for exactly the niche that I believe needs to filled. (Despite all of the above, I &lt;em&gt;am&lt;/em&gt; continuing to develop a new version of Boulder Problems, but focused toward personal, rather than social, logging. More on that another time.)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;I got injured. A lot.&lt;/strong&gt; As I mentioned on my other blog, &lt;a href=&quot;http://negativeape.com/2014/10/coming-back-to-life/&quot;&gt;2014 was a bad year for my body&lt;/a&gt;. I ate poorly, drank too many beers, and didn’t exercise enough.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;I stopped bouldering.&lt;/strong&gt; Well, not entirely. But I barely climbed, and when I did, I lacked strength and motivation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;successes&quot;&gt;Successes&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;I got married!&lt;/strong&gt; Weddings are surprisingly stressful and time-consuming affairs. Heather and I somehow managed to cobble together an unforgettably fun ceremony and reception with our closest family and friends. I wouldn’t trade the experience for anything, but also it’s a bit of a relief to put it behind us.&lt;/li&gt;
+  &lt;li&gt;On the coding side of life, &lt;strong&gt;I fell in love with &lt;a href=&quot;https://www.ruby-lang.org/&quot;&gt;Ruby&lt;/a&gt;&lt;/strong&gt;. I’ve been dabbling in it for a while, but this year I finally started to get comfortable with the language.&lt;/li&gt;
+  &lt;li&gt;And&lt;strong&gt; I finally learned to write automated tests.&lt;/strong&gt; It’s embarrassing to admit, but I only recently began writing tests for my code. &lt;a href=&quot;http://exercism.io/&quot;&gt;Exercism.io&lt;/a&gt; introduced me to the practice, and &lt;a href=&quot;https://www.justinweiss.com/&quot;&gt;Justin Weiss’s blog&lt;/a&gt; took me deeper.  I’ve barely scratched the surface, but having learned the basics, I’m excited to keep learning and improving.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;I did less &lt;a href=&quot;http://en.wikipedia.org/wiki/Cowboy_coding&quot;&gt;cowboy coding&lt;/a&gt;.&lt;/strong&gt; As a self-taught developer who’s worked only on tiny coding teams, I’ve never been exposed to many industry best-practices. The more I experiment with tools and ideas like Ruby, Vagrant, Git, Capistrano, &lt;a href=&quot;http://semver.org/&quot;&gt;Semantic Versioning&lt;/a&gt;, and SASS, the more I appreciate the value of doing things correctly. I still have much to learn, but I think I’m on the right path.&lt;/li&gt;
+  &lt;li&gt;And finally, I helped Heather launch her business, &lt;a href=&quot;http://thetoppingtree.com/&quot;&gt;The Topping Tree&lt;/a&gt;!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;goals&quot;&gt;Goals&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Write more Ruby.&lt;/strong&gt; I’m not sure how well this meshes with my current job as a PHP developer, but I’m going to try.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Blog more.&lt;/strong&gt; At least once a week.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Strength train consistently.&lt;/strong&gt; Every time I start a new strength training program, it goes well for a few months until I injure myself. This year I’m going to try a more consistent, less ambitious program.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Climb regularly.&lt;/strong&gt; I’d like to set a regular schedule for the spring and summer, so that I’m in shape for the fall bouldering season. I’d love to send a V8 this year – a difficult, but attainable, goal.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Take an extended ski trip.&lt;/strong&gt; Skiing powder is one of my favorite pleasures, and now that Heather has also gotten the bug, we’re thinking about moving West for a couple of months to ski. In future blog posts, I hope to lay out a plan for achieving this goal.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 14 Jan 2015 17:01:17 -0500</pubDate>
+        <link>http://waz.ski/uncategorized/2015/01/14/failures-successes-and-goals.html</link>
+        <guid isPermaLink="true">http://waz.ski/uncategorized/2015/01/14/failures-successes-and-goals.html</guid>
+        
+        
+        <category>Uncategorized</category>
+        
+      </item>
+    
+      <item>
+        <title>What Problems to Solve</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;You say you are a nameless man. You are not to your wife and to your child. You will not long remain so to your immediate colleagues if you can answer their simple questions when they come into your office. You are not nameless to me. Do not remain nameless to yourself – it is too sad a way to be. &lt;strong&gt;Know your place in the world and evaluate yourself fairly, not in terms of your naïve ideals of your own youth, nor in terms of what you erroneously imagine your teacher’s ideals are.&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;Richard Feynman, &lt;a href=&quot;http://genius.cat-v.org/richard-feynman/writtings/letters/problems&quot;&gt;What Problems to Solve&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Fri, 18 Jul 2014 11:21:04 -0400</pubDate>
+        <link>http://waz.ski/uncategorized/2014/07/18/what-problems-to-solve.html</link>
+        <guid isPermaLink="true">http://waz.ski/uncategorized/2014/07/18/what-problems-to-solve.html</guid>
+        
+        
+        <category>Uncategorized</category>
+        
+      </item>
+    
+      <item>
+        <title>Which .conf file(s) is Apache using?</title>
+        <description>&lt;p&gt;&lt;span class=&quot;run-in&quot;&gt;I spent the majority of this week debugging some Apache ModRewrite rules.&lt;/span&gt; (Yes, today is Wednesday.) It shouldn’t have taken so long. The rules themselves weren’t complex, but the server environment is.&lt;/p&gt;
+
+&lt;p&gt;Our production web site consists of a load balancer, Memcached server, two synchronized app servers, and two synchronized static file servers. There are obsolete, broken, and duplicate Apache config files distributed in various directories across the app and static servers. Many of the config files recursively included directories full of other config files. By trial-and-error, I sifted through them all, adding debug statements and restarting httpd, over and over and over. Nothing worked; Apache ignored every file I touched.&lt;/p&gt;
+
+&lt;p&gt;As usual, it turns out there’s an easier way to discover &lt;em&gt;exactly&lt;/em&gt; which .conf files Apache is using.&lt;/p&gt;
+
+&lt;p&gt;First, get some data about your running Apache process:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ps ax | grep httpd
+21765 ?        Ss     0:00 /usr/sbin/httpd -f /var/www/conf/example.com.conf -E /var/www/logs/example.com-20140514-startup.log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is valuable information, because now that we know the exact binary and config file Apache is running with, we can use the &lt;a href=&quot;http://httpd.apache.org/docs/2.4/programs/httpd.html&quot;&gt;-S option&lt;/a&gt; to show VirtualHost settings:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/sbin/httpd -f /var/www/conf/example.com.conf -S
+VirtualHost configuration:
+*:80    is a NameVirtualHost
+        default server www.example.com (/var/www/conf/virtual/example.com/www.example.com.conf:1)
+        port 80 namevhost www.example.com (/var/www/conf/virtual/example.com/www.example.com.conf:1)
+        port 80 namevhost www2.example.com (/var/www/conf/virtual/example.com/www2.example.com.conf:1)
+        ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;From the output above, we see that &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;s VirtualHost is defined in &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/www/conf/virtual/example.com/www.example.com.conf&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;That’s all there is to it — no guesswork necessary.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 14 May 2014 14:22:40 -0400</pubDate>
+        <link>http://waz.ski/uncategorized/2014/05/14/which-conf-files-is-apache-using.html</link>
+        <guid isPermaLink="true">http://waz.ski/uncategorized/2014/05/14/which-conf-files-is-apache-using.html</guid>
+        
+        <category>Apache</category>
+        
+        <category>sysadmin</category>
+        
+        
+        <category>Uncategorized</category>
+        
+      </item>
+    
+      <item>
+        <title>WordPress multisite proxy configuration</title>
+        <description>&lt;p&gt;I’ve been using &lt;a href=&quot;http://codex.wordpress.org/Create_A_Network&quot;&gt;WordPress multisite&lt;/a&gt; for a few projects at work lately, and it’s been great — mostly. Unfortunately, because of its reliance on ModRewrite, anything beyond the most basic configuration can be complicated.&lt;/p&gt;
+
+&lt;p&gt;In this case, I needed to install a multisite network in a subfolder, served from behind a load-balancing proxy. WordPress multisite is very particular about hostnames, so it detects that the proxy server hostnames (&lt;code class=&quot;highlighter-rouge&quot;&gt;proxy1.mysite.com&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;proxy2.mysite.com&lt;/code&gt;) don’t match the site hostname (&lt;code class=&quot;highlighter-rouge&quot;&gt;www.mysite.com&lt;/code&gt;), and degrades to an infinite redirect loop.&lt;/p&gt;
+
+&lt;p&gt;The solution below comes after days of research, testing, and tearing out my hair. Of course, all environments are different, so your mileage will probably vary.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution-well-maybe&quot;&gt;The solution (well, maybe)&lt;/h2&gt;
+
+&lt;p&gt;After enabling your multisite network, WordPress provides the following code snippets (which we’ll modify in just a moment):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define(&#39;MULTISITE&#39;, true);
+define(&#39;SUBDOMAIN_INSTALL&#39;, false);
+define(&#39;DOMAIN_CURRENT_SITE&#39;, &#39;www.mysite.com&#39;);
+define(&#39;PATH_CURRENT_SITE&#39;, &#39;/subfolder/&#39;);
+define(&#39;SITE_ID_CURRENT_SITE&#39;, 1);
+define(&#39;BLOG_ID_CURRENT_SITE&#39;, 1);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;RewriteEngine On
+RewriteBase /subfolder/
+RewriteRule ^index.php$ - [L]
+
+# uploaded files
+RewriteRule ^([_0-9a-zA-Z-]+/)?files/(.+) wp-includes/ms-files.php?file=$2 [L]
+
+# add a trailing slash to /wp-admin
+RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(.*.php)$ $2 [L]
+RewriteRule . index.php [L]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now let’s make some additions. New lines are bold:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define(&#39;MULTISITE&#39;, true);
+define(&#39;SUBDOMAIN_INSTALL&#39;, false);
+&lt;strong&gt;$base = &#39;/subfolder/&#39;;&lt;/strong&gt;
+define(&#39;DOMAIN_CURRENT_SITE&#39;, &#39;www.mysite.com&#39;);
+define(&#39;PATH_CURRENT_SITE&#39;, &#39;/subfolder/&#39;);
+define(&#39;SITE_ID_CURRENT_SITE&#39;, 1);
+define(&#39;BLOG_ID_CURRENT_SITE&#39;, 1);
+
+&lt;strong&gt;if ( isset( $_SERVER[&#39;HTTP_X_FORWARDED_HOST&#39;] ) ) {
+  $_SERVER[&#39;HTTP_HOST&#39;] = $_SERVER[&#39;HTTP_X_FORWARDED_HOST&#39;];
+}&lt;/strong&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;RewriteEngine On
+RewriteBase /subfolder/
+RewriteRule ^index.php$ - [L]
+
+# uploaded files
+RewriteRule ^([_0-9a-zA-Z-]+/)?files/(.+) wp-includes/ms-files.php?file=$2 [L]
+
+# add a trailing slash to /wp-admin
+RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+
+&lt;strong&gt;RewriteCond %{HTTP:X-Forwarded-Host} !^$
+RewriteCond %{HTTP:X-Forwarded-Host} !^www. [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.mysite.com%{REQUEST_URI} [R=301,L]&lt;/strong&gt;
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(.*.php)$ $2 [L]
+RewriteRule . index.php [L]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that’s it. This combination of rules delicately nudges your URLs into a format that WordPress and Apache won’t choke on.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 28 Jan 2014 15:04:47 -0500</pubDate>
+        <link>http://waz.ski/uncategorized/2014/01/28/wordpress-multisite-proxy-configuration.html</link>
+        <guid isPermaLink="true">http://waz.ski/uncategorized/2014/01/28/wordpress-multisite-proxy-configuration.html</guid>
+        
+        
+        <category>Uncategorized</category>
+        
+      </item>
+    
+  </channel>
+</rss>
