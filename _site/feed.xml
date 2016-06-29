@@ -5,9 +5,69 @@
     <description></description>
     <link>http://waz.ski/</link>
     <atom:link href="http://waz.ski/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 28 Jun 2016 17:28:37 -0400</pubDate>
-    <lastBuildDate>Tue, 28 Jun 2016 17:28:37 -0400</lastBuildDate>
+    <pubDate>Tue, 28 Jun 2016 22:00:58 -0400</pubDate>
+    <lastBuildDate>Tue, 28 Jun 2016 22:00:58 -0400</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Build and Launch a Web App in 24 Hours: Part 1</title>
+        <description>&lt;p&gt;Some of my worst development habits are &lt;a href=&quot;https://en.wiktionary.org/wiki/yak_shaving&quot;&gt;yak shaving&lt;/a&gt;, &lt;a href=&quot;https://en.wiktionary.org/wiki/bikeshedding&quot;&gt;bikeshedding&lt;/a&gt;, and &lt;a href=&quot;https://en.wikipedia.org/wiki/Analysis_paralysis&quot;&gt;analysis paralysis&lt;/a&gt;. If there’s &lt;em&gt;any&lt;/em&gt; way to sweat minor details for hours, I’ll find it. I’ve quieted these tendencies throughout my career, but still find myself overanalyzing, fiddling, and researching more than I’d like. And while this can lead to serendipitous learning opportunities, it also leads to missed deadlines.&lt;/p&gt;
+
+&lt;p&gt;So I’m giving myself a fun challenge to practice focus and time management: develop and launch a web app in one “day” (twenty-four total hours of work). Before beginning, I’ll present hourly estimates for each phase of the project, and then strictly limit my time to those estimates.&lt;/p&gt;
+
+&lt;p&gt;I’ll be building a results search for a popular local road race on Sunday, July 10th (eleven days from today). So, on top of the self-imposed constraints, there’s a hard deadline.&lt;/p&gt;
+
+&lt;p&gt;Naturally, the web app will be a &lt;a href=&quot;https://en.wikipedia.org/wiki/Minimum_viable_product&quot;&gt;minimum viable product&lt;/a&gt;, but should be functional enough to be used, and hopefully shared, by real people. Here’s a preliminary list of features, which may evolve:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A user can search for results (place/time) by name, bib #, or hometown.&lt;/li&gt;
+  &lt;li&gt;After finding their results, a user can view an animated map comparing their race progress to the winner’s.&lt;/li&gt;
+  &lt;li&gt;A user can sign up for text alerts to be notified as soon as results are available (on race day).&lt;/li&gt;
+  &lt;li&gt;A user can easily share their results page on social media.&lt;/li&gt;
+  &lt;li&gt;An admin can import race results in one click&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;phase-1-product-design&quot;&gt;Phase 1: Product Design&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Finalize feature list: &lt;em&gt;1 hour&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Sketches/wireframes: &lt;em&gt;1 hour&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;phase-2-backendapi&quot;&gt;Phase 2: Backend/API&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bootstrap development platform: &lt;em&gt;1 hour&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Model database schema: &lt;em&gt;1 hour&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Build user views and API endpoints: &lt;em&gt;4 hours&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Build admin import function: &lt;em&gt;2 hours&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;phase-3-frontendui&quot;&gt;Phase 3: Frontend/UI&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Build static UI in HTML/CSS: &lt;em&gt;3 hours&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Build dynamic race visualization UI: &lt;em&gt;4 hours&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;phase-4-production&quot;&gt;Phase 4: Production&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Find and register domain: &lt;em&gt;1/2 hour&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Set up hosting: &lt;em&gt;1/2 hour&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Deploy to production: &lt;em&gt;1 hour&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;phase-5-finalize&quot;&gt;Phase 5: Finalize&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Test: &lt;em&gt;2 hours&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Fix bugs: &lt;em&gt;3 hours&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This may not seem &lt;em&gt;terribly&lt;/em&gt; ambitious, but with a full time job, a separate ongoing project, and a two-month-old baby at home, my free time is extremely limited—so it will be a sprint to make this happen. I’m excited to see how this experiment works out, and will post updates on its progress.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 28 Jun 2016 20:25:23 -0400</pubDate>
+        <link>http://waz.ski/2016/06/28/build-and-launch-a-web-app-in-24-hours.html</link>
+        <guid isPermaLink="true">http://waz.ski/2016/06/28/build-and-launch-a-web-app-in-24-hours.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -321,93 +381,6 @@ VirtualHost configuration:
         <category>Apache</category>
         
         <category>sysadmin</category>
-        
-        
-        <category>Uncategorized</category>
-        
-      </item>
-    
-      <item>
-        <title>WordPress multisite proxy configuration</title>
-        <description>&lt;p&gt;I’ve been using &lt;a href=&quot;http://codex.wordpress.org/Create_A_Network&quot;&gt;WordPress multisite&lt;/a&gt; for a few projects at work lately, and it’s been great — mostly. Unfortunately, because of its reliance on ModRewrite, anything beyond the most basic configuration can be complicated.&lt;/p&gt;
-
-&lt;p&gt;In this case, I needed to install a multisite network in a subfolder, served from behind a load-balancing proxy. WordPress multisite is very particular about hostnames, so it detects that the proxy server hostnames (&lt;code class=&quot;highlighter-rouge&quot;&gt;proxy1.mysite.com&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;proxy2.mysite.com&lt;/code&gt;) don’t match the site hostname (&lt;code class=&quot;highlighter-rouge&quot;&gt;www.mysite.com&lt;/code&gt;), and degrades to an infinite redirect loop.&lt;/p&gt;
-
-&lt;p&gt;The solution below comes after days of research, testing, and tearing out my hair. Of course, all environments are different, so your mileage will probably vary.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-solution-well-maybe&quot;&gt;The solution (well, maybe)&lt;/h2&gt;
-
-&lt;p&gt;After enabling your multisite network, WordPress provides the following code snippets (which we’ll modify in just a moment):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;define(&#39;MULTISITE&#39;, true);
-define(&#39;SUBDOMAIN_INSTALL&#39;, false);
-define(&#39;DOMAIN_CURRENT_SITE&#39;, &#39;www.mysite.com&#39;);
-define(&#39;PATH_CURRENT_SITE&#39;, &#39;/subfolder/&#39;);
-define(&#39;SITE_ID_CURRENT_SITE&#39;, 1);
-define(&#39;BLOG_ID_CURRENT_SITE&#39;, 1);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;RewriteEngine On
-RewriteBase /subfolder/
-RewriteRule ^index.php$ - [L]
-
-# uploaded files
-RewriteRule ^([_0-9a-zA-Z-]+/)?files/(.+) wp-includes/ms-files.php?file=$2 [L]
-
-# add a trailing slash to /wp-admin
-RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
-
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
-RewriteRule ^([_0-9a-zA-Z-]+/)?(.*.php)$ $2 [L]
-RewriteRule . index.php [L]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now let’s make some additions. New lines are bold:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;define(&#39;MULTISITE&#39;, true);
-define(&#39;SUBDOMAIN_INSTALL&#39;, false);
-&lt;strong&gt;$base = &#39;/subfolder/&#39;;&lt;/strong&gt;
-define(&#39;DOMAIN_CURRENT_SITE&#39;, &#39;www.mysite.com&#39;);
-define(&#39;PATH_CURRENT_SITE&#39;, &#39;/subfolder/&#39;);
-define(&#39;SITE_ID_CURRENT_SITE&#39;, 1);
-define(&#39;BLOG_ID_CURRENT_SITE&#39;, 1);
-
-&lt;strong&gt;if ( isset( $_SERVER[&#39;HTTP_X_FORWARDED_HOST&#39;] ) ) {
-  $_SERVER[&#39;HTTP_HOST&#39;] = $_SERVER[&#39;HTTP_X_FORWARDED_HOST&#39;];
-}&lt;/strong&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;RewriteEngine On
-RewriteBase /subfolder/
-RewriteRule ^index.php$ - [L]
-
-# uploaded files
-RewriteRule ^([_0-9a-zA-Z-]+/)?files/(.+) wp-includes/ms-files.php?file=$2 [L]
-
-# add a trailing slash to /wp-admin
-RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
-
-&lt;strong&gt;RewriteCond %{HTTP:X-Forwarded-Host} !^$
-RewriteCond %{HTTP:X-Forwarded-Host} !^www. [NC]
-RewriteCond %{HTTPS}s ^on(s)|
-RewriteRule ^ http%1://www.mysite.com%{REQUEST_URI} [R=301,L]&lt;/strong&gt;
-
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
-RewriteRule ^([_0-9a-zA-Z-]+/)?(.*.php)$ $2 [L]
-RewriteRule . index.php [L]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And that’s it. This combination of rules delicately nudges your URLs into a format that WordPress and Apache won’t choke on.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 28 Jan 2014 15:04:47 -0500</pubDate>
-        <link>http://waz.ski/uncategorized/2014/01/28/wordpress-multisite-proxy-configuration.html</link>
-        <guid isPermaLink="true">http://waz.ski/uncategorized/2014/01/28/wordpress-multisite-proxy-configuration.html</guid>
         
         
         <category>Uncategorized</category>
