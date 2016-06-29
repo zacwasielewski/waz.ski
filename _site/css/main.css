@@ -1,3 +1,33 @@
+html, body {
+  background-color: #f7fff7;
+  color: #1a535c; }
+
+a, a:link {
+  color: #1a535c; }
+
+.page-content a, .page-content a:link,
+.post-content a,
+.post-content a:link,
+.post-navigation a,
+.post-navigation a:link {
+  color: #ff4747;
+  border-bottom: 0.11em solid rgba(255, 71, 71, 0.2); }
+.page-content a:visited,
+.post-content a:visited,
+.post-navigation a:visited {
+  color: #1a535c;
+  border-bottom-color: rgba(26, 83, 92, 0.2); }
+.page-content a:hover,
+.post-content a:hover,
+.post-navigation a:hover {
+  border-bottom-color: rgba(255, 71, 71, 0.3);
+  background-color: rgba(255, 71, 71, 0.05); }
+.page-content a:visited:hover,
+.post-content a:visited:hover,
+.post-navigation a:visited:hover {
+  border-bottom-color: rgba(26, 83, 92, 0.3);
+  background-color: rgba(26, 83, 92, 0.05); }
+
 html {
   font-size: 100%;
   line-height: 1.5;
