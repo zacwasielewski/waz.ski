@@ -44,15 +44,20 @@ code {
   overflow-x: scroll; }
 
 @media (min-width: 1024px) {
-  .page-content {
+  .wrapper {
     max-width: 100%;
     margin-left: auto;
     margin-right: auto; }
-    .page-content:after {
+    .wrapper:after {
       content: " ";
       display: block;
       clear: both; }
 
+  .site-header .wrapper,
+  .site-footer .wrapper {
+    padding: 1em 2em; }
+
+  .home,
   .page-content .post {
     margin-left: 8.47458%;
     width: 49.15254%;
@@ -69,3 +74,6 @@ p + p {
 
 .post-meta {
   font-style: italic; }
+
+.icon > svg {
+  width: 1em; }

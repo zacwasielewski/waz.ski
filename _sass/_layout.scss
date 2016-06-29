@@ -6,10 +6,16 @@ code {
 
 @include susy-breakpoint(map-get($breakpoints, large)) {
 
-  .page-content {
+  .wrapper {
     @include container(auto);
   }
 
+  .site-header .wrapper,
+  .site-footer .wrapper {
+    padding: 1em 2em;
+  }
+
+  .home,
   .page-content .post {
     @include pre(1 of 12);
     @include span(6 of 12);
@@ -31,4 +37,8 @@ p + p {
 
 .post-meta {
   font-style: italic;
+}
+
+.icon > svg {
+  width: 1em;
 }
