@@ -1,24 +1,73 @@
+body {
+  margin: 1em;
+}
+
 pre,
 code {
   max-width: 100%;
   overflow-x: scroll;
 }
 
+.site-title {
+  @extend h2;
+  font-weight: bold;
+}
+
+.post-navigation {
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  li {
+    margin-left: 0;
+  }
+}
+
 @include susy-breakpoint(map-get($breakpoints, large)) {
 
-  .wrapper {
-    @include container(auto);
+  body {
+    margin: 0;
   }
 
+  .site-header,
+  .site-footer {
+    @include container(auto);
+    padding-top: vr(1);
+    padding-bottom: vr(1);
+  }
+  .site-header .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
   .site-header .wrapper,
   .site-footer .wrapper {
-    padding: 1em 2em;
+    @include pre(1 of 12);
+    @include span(10 of 12);
   }
 
+  //.wrapper {
+  //  @include container(auto);
+  //}
+//
+  //.site-header .wrapper,
+  //.site-footer .wrapper {
+  //  padding: 1em 2em;
+  //}
+//
+
+  .post-header {
+    @include pre(1 of 12);
+    @include span(10 of 12);
+  }
   .home,
-  .page-content .post {
+  .post-content {
     @include pre(1 of 12);
     @include span(6 of 12);
+  }
+  .post-navigation {
+    @include pre(1 of 12);
+    @include span(10 of 12);
   }
 
 }
