@@ -60,7 +60,7 @@ code {
     @include pre(1 of 12);
     @include span(10 of 12);
   }
-  .home,
+  .page-content,
   .post-content {
     @include pre(1 of 12);
     @include span(6 of 12);
@@ -68,6 +68,8 @@ code {
   .post-navigation {
     @include pre(1 of 12);
     @include span(10 of 12);
+    margin-top: vr(1);
+    margin-bottom: vr(1);
   }
 
 }
